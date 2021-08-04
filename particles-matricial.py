@@ -88,7 +88,7 @@ class trajectories:
 
         plt.show()
 
-def initialize_particles(n, timesteps, random, initialState,  k=5000, M=10**8):
+def initialize_particles(n, timesteps, random, initialState,  k=5000, M=10**9):
 
     Dx = np.zeros((n, timesteps))
     Dy = np.zeros((n, timesteps))
@@ -115,7 +115,7 @@ def initialize_particles(n, timesteps, random, initialState,  k=5000, M=10**8):
             Vy[i][0] = rd.randint(-25**4//math.sqrt(3), 25**4//math.sqrt(3))
             Vz[i][0] = rd.randint(-25**4//math.sqrt(3), 25**4//math.sqrt(3))
 
-            coef = rd.randint(0, k)
+            coef = rd.randint(1, k)
             m[i][0] = coef*M
 
     else:
@@ -176,8 +176,8 @@ def simulate(n, timesteps, h, random=True, initialState=None):
     print("\nConcluido em " + str(t2 - t1) + 'segundos.')
     return D, trajectories(D, h, m)
 
-D, trajetorias = simulate(50, 70000, 0.1)
-trajetorias.evolution()
+D, trajetorias = simulate(3, 700000, 0.01)
+#trajetorias.evolution()
 trajetorias.free_trajectories()
 trajetorias.referential_trajectories()
 
